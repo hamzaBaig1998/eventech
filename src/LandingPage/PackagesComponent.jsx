@@ -9,9 +9,9 @@ export default function PackagesComponent() {
         </h3>
         <div class="row m-2">
           <div class="col-md-6 p-3">
-            <div class="card">
+            <div class="card shadow">
               <img
-                src="images/types/corporate.jpg"
+                src="assets/images/types/corporate.jpg"
                 alt=""
                 class="card-img-top"
               />
@@ -30,9 +30,9 @@ export default function PackagesComponent() {
             </div>
           </div>
           <div class="col-md-6 p-3">
-            <div class="card">
+            <div class="card shadow">
               <img
-                src="images/types/academic.jpg"
+                src="assets/images/types/academic.jpg"
                 alt=""
                 class="card-img-top"
               />
