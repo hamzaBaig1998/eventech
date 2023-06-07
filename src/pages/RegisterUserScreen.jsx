@@ -1,0 +1,42 @@
+import React from "react";
+import FormInput from "../components/FormInput";
+import Form from "../components/Form";
+
+export default function RegisterUserScreen() {
+  return (
+    <div className="bg-crowd">
+      <div className="container d-flex flex-column justify-content-center align-items-center vh-100">
+        <h1 class="text-center mb-4">Register User</h1>
+        <Form>
+          <FormInput
+            id="username"
+            type={"text"}
+            placeholder={"Username"}
+            title={"Username"}
+          />
+          <FormInput
+            id="email"
+            type={"email"}
+            placeholder={"Email"}
+            title={"Email"}
+          />
+          <FormInput
+            id="password"
+            type={"password"}
+            placeholder={"password"}
+            title={"Password"}
+          />
+          <FormInput
+            id="confirm_password"
+            type={"password"}
+            placeholder={"password"}
+            title={"Confirm Password"}
+          />
+          <button type="submit" className="btn button-color w-100 mt-3">
+            Register
+          </button>
+        </Form>
+      </div>
+    </div>
+  );
+}
