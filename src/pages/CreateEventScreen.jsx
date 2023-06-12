@@ -2,10 +2,12 @@ import React from "react";
 import FormInput from "../components/FormInput";
 import Form from "../components/Form";
 import TextArea from "../components/TextArea";
+import NavBar from "../components/NavBar";
 
 export default function CreateEventForm() {
   return (
     <div className="bg-crowd">
+      <NavBar />
       <div className="container d-flex flex-column justify-content-center align-items-center vh-100">
         <h1 class="text-center mb-4">Create Event</h1>
         <form className="p-5 rounded shadow bg-white">
