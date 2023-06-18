@@ -6,14 +6,14 @@ export default function Sidebar() {
         <div className="container-fluid">
 
             <div className="row ">
-                <div className="bg-primary col-auto col-md-2 min-vh-100 d-flex justify-content-between flex-column ">
+                <div className="bg-primary col-auto col-md-2 min-vh-100 d-flex justify-content-between flex-column pt-3 px-0">
                     <div>
-                        <a href="" className="d-flex align-itemcenter ms-3 mt-2 d-none d-sm-inline">
+                        <a href="" className="d-flex align-itemcenter ms-3  d-none d-sm-inline">
 
-                            <span className="ms-1 fs-4 d-none d-sm-inline text-white"><strong>Event</strong>Tech</span>
+                            <span className="ms-1 fs-4 d-none d-sm-inline pt-5 text-white"><strong>Event</strong>Tech</span>
                         </a>
                         <hr className="text-secondary d-none d-sm-block" />
-                        <ul className="nav nav-pill flex-column">
+                        <ul className="nav nav-pill flex-column" id="navig">
                             <li className="nav-items fs-4 my-1 py-2 py-sm-0">
                                 <a href="" className="nav-link fs-5 text-white" aria-current="page">
                                     <i className="fs-4 bi bi-speedometer"></i>

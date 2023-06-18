@@ -9240,4 +9240,10 @@ body {
   transform: translateY(-2px);
 }
 
+#navig li a:hover {
+  background-color: var(--dark);
+
+  fill-opacity: 10%;
+}
+
 /*# sourceMappingURL=app.css.map */
