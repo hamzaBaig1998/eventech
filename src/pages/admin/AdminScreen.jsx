@@ -6,7 +6,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 export default function AdminScreen() {
     return (
-        <div className="bg-dark">
+        <div className="bg-light">
             {/*            <NavBar /> */}
             <Sidebar />
             <div className="row">
