@@ -9281,9 +9281,9 @@ body {
   background-color: #b09157;
 }
 
-.card:hover {
+/* .card:hover {
   transform: translateY(-2px);
-}
+} */
 
 #navig li a:hover {
   background-color: var(--dark);

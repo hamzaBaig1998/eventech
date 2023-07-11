@@ -1,23 +1,42 @@
 import react from "react";
 
-
-
 export default function EventTicket(props) {
-    const { title, description, capacity, startdate, enddate } = props;
-    return (
-        <div className="card " >
+  const { title, description, capacity, startdate, enddate } = props;
 
-            <img src={`${props.img}`} className="card-img-top p-3" alt="..." />
-            <div className="card-body">
-                <h5 className="card-title">{title} </h5>
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item"> {description}</li>
-                    <li className="list-group-item">Capacity: {capacity}</li>
-                    <li className="list-group-item">Start Date: {startdate}</li>
-                    <li className="list-group-item">End Date: {enddate}</li>
-                </ul>
-                <a href="#" className="btn btn-primary">Go somewhere</a>
-            </div>
+  const cardStyle = {
+    boxShadow: "0 0.5rem 1rem rgba(0, 0, 0, 0.15)",
+    transition: "box-shadow 0.3s ease-in-out",
+    borderRadius: "10px",
+    overflow: "hidden",
+  };
+
+  const infoStyle = {
+    textAlign: "left",
+  };
+
+  return (
+    <div className="card w-25" style={cardStyle}>
+      <img src={`${props.img}`} className="card-img-top p-3" alt="..." />
+      <div className="card-body">
+        <h5 className="card-title">{props.title} </h5>
+        <div style={infoStyle}>
+          <p>
+            <strong>Description:</strong> {props.description}
+          </p>
+          <p>
+            <strong>Capacity:</strong> {props.capacity}
+          </p>
+          <p>
+            <strong>Start Date:</strong> {props.startdate}
+          </p>
+          <p>
+            <strong>End Date:</strong> {props.enddate}
+          </p>
         </div>
-    )
+        <a href="#" className="btn btn-primary btn-block">
+          Book Ticket
+        </a>
+      </div>
+    </div>
+  );
 }
