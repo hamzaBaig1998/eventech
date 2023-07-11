@@ -9,6 +9,9 @@ import CreateEventForm from "./pages/CreateEventScreen";
 import AdminScreen from "./pages/admin/AdminScreen"
 import DashCard from "./components/dashcard";
 import Sidebar from "./components/sidebar";
+import ProfilePage from "./pages/ProfilePage";
+import Profile from "./pages/Profile";
+
 
 export default function AppRouter() {
   return (
@@ -21,6 +24,8 @@ export default function AppRouter() {
         <Route path="/registeruser" element={<RegisterUserScreen />} />
         <Route path="/login" element={<CreateEventForm />} />
         <Route path="/test" element={<AdminScreen />} />
+        <Route path="/profilepage" element={<ProfilePage />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
   );
