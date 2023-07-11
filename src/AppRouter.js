@@ -9,6 +9,8 @@ import CreateEventForm from "./pages/CreateEventScreen";
 import AdminScreen from "./pages/admin/AdminScreen"
 import DashCard from "./components/dashcard";
 import Sidebar from "./components/sidebar";
+import ShowTicket from "./pages/ShowTicket";
+
 
 export default function AppRouter() {
   return (
@@ -20,7 +22,8 @@ export default function AppRouter() {
         <Route path="/registercompany" element={<RegisterCompanyScreen />} />
         <Route path="/registeruser" element={<RegisterUserScreen />} />
         <Route path="/login" element={<CreateEventForm />} />
-        <Route path="/test" element={<AdminScreen />} />
+        <Route path="/admin" element={<AdminScreen />} />
+        <Route path="/test" element={<ShowTicket />} />
       </Routes>
     </Router>
   );
