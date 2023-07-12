@@ -8,15 +8,14 @@ import RegisterCompanyScreen from "./pages/RegisterCompanyScreen";
 import RegisterUserScreen from "./pages/RegisterUserScreen";
 import CreateEventForm from "./pages/CreateEventScreen";
 import AdminScreen from "./pages/admin/AdminScreen";
+import ShowTicket from "./pages/ShowTicket";
+import Profile from "./pages/Profile";
+import ProfilePage from "./pages/ProfilePage";
 import DashCard from "./components/dashcard";
 import Sidebar from "./components/sidebar";
-<<<<<<< HEAD
-import ShowTicket from "./pages/ShowTicket";
-=======
-import ProfilePage from "./pages/ProfilePage";
-import Profile from "./pages/Profile";
-
->>>>>>> parent of bcb6f2f (Revert "added accordion")
+import EventList from "./pages/admin/EventListPage";
+import EventListPage from "./pages/admin/EventListPage";
+import EditEventPage from "./pages/admin/EditEventPage";
 
 export default function AppRouter() {
   return (
@@ -27,17 +26,16 @@ export default function AppRouter() {
         <Route path="/registeradmin" element={<RegisterAdminScreen />} />
         <Route path="/registercompany" element={<RegisterCompanyScreen />} />
         <Route path="/registeruser" element={<RegisterUserScreen />} />
-<<<<<<< HEAD
-        <Route path="/create-event" element={<CreateEventForm />} />
-        <Route path="/admin" element={<AdminScreen />} />
-        <Route path="/ticket" element={<ShowTicket />} />
-        <Route path="*" element={<PageNotFound />} />
-=======
         <Route path="/login" element={<CreateEventForm />} />
         <Route path="/test" element={<AdminScreen />} />
         <Route path="/profilepage" element={<ProfilePage />} />
+        <Route path="/ticket" element={<ShowTicket />} />
         <Route path="/profile" element={<Profile />} />
->>>>>>> parent of bcb6f2f (Revert "added accordion")
+        <Route path="/admin" element={<AdminScreen />} />
+        <Route path="/create-event" element={<CreateEventForm />} />
+        <Route path="/eventlistscreen" element={<EventListPage />} />
+        <Route path="/editevent" element={<EditEventPage />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>
   );
