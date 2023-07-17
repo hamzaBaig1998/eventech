@@ -26,7 +26,7 @@ export default function AppRouter() {
         <Route path="/registeradmin" element={<RegisterAdminScreen />} />
         <Route path="/registercompany" element={<RegisterCompanyScreen />} />
         <Route path="/registeruser" element={<RegisterUserScreen />} />
-        <Route path="/login" element={<CreateEventForm />} />
+        {/* <Route path="/login" element={<CreateEventForm />} /> */}
         <Route path="/test" element={<AdminScreen />} />
         <Route path="/profilepage" element={<ProfilePage />} />
         <Route path="/ticket" element={<ShowTicket />} />

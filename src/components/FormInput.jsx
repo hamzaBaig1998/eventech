@@ -1,16 +1,17 @@
 import React from "react";
 
-export default function FormInput({ id, type, title, placeholder }) {
+export default function FormInput({ id, type, title, placeholder, onChange }) {
   return (
-    <div class="mb-3">
-      <label for={id} class="form-label">
+    <div className="mb-3">
+      <label htmlFor={id} className="form-label">
         {title}
       </label>
       <input
         type={type}
-        class="form-control"
+        className="form-control"
         id={id}
         placeholder={placeholder}
+        onChange={onChange}
       />
     </div>
   );

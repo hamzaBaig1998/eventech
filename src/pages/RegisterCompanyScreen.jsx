@@ -2,6 +2,7 @@ import React from "react";
 import FormInput from "../components/FormInput";
 import Form from "../components/Form";
 import NavBar from "../components/NavBar";
+import { API_BASE_URL } from "../constants";
 
 export default function RegisterCompanyScreen() {
   return (

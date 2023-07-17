@@ -1,35 +1,82 @@
-import react from "react";
-import NavBar from "../../components/NavBar";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../../components/sidebar";
 import DashCard from "../../components/dashcard";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
+import { API_BASE_URL } from "../../constants";
+
 export default function AdminScreen() {
+  const [attendees, setAttendees] = useState([]);
+
+  useEffect(() => {
+    const user_id = localStorage.getItem("user_id");
+    fetch(`${API_BASE_URL}/admin/${user_id}/attendees/`)
+      .then((response) => response.json())
+      .then((data) => {
+        setAttendees(data);
+        console.log(data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
   return (
     <div className="container-fluid m-0 p-0">
       <div className="d-flex ">
         <Sidebar />
         <div className="container-fluid px-5">
           <h1 className="display-4 text-center">Admin Dashboard</h1>
+          {attendees ? (
+            <div className="row">
+              <DashCard
+                count={attendees.events ? attendees.events.length : "0"}
+                title={"Events"}
+                icon={"people-fill"}
+                color={"black"}
+              />
+              <DashCard
+                count={"3123"}
+                title={"Sales"}
+                icon={"people-fill"}
+                color={"black"}
+              />
+              <DashCard
+                count={"3123"}
+                title={"Attendees"}
+                icon={"people-fill"}
+                color={"black"}
+              />
+            </div>
+          ) : (
+            ""
+          )}
+
+          <h1 className="display-5">Events</h1>
           <div className="row">
-            <DashCard
-              count={"3123"}
-              title={"Sale"}
-              icon={"people-fill"}
-              color={"black"}
-            />
-            <DashCard
-              count={"3123"}
-              title={"Sale"}
-              icon={"people-fill"}
-              color={"black"}
-            />
-            <DashCard
-              count={"3123"}
-              title={"Sale"}
-              icon={"people-fill"}
-              color={"black"}
-            />
+            {attendees.events
+              ? attendees.events.map((ev) => (
+                  <div className="col-lg-4 col-md-6 mb-4">
+                    <div className="card bg-primary text-white border-0 shadow-sm">
+                      <div className="card-body">
+                        <h5 className="card-title">{ev.name}</h5>
+                        <div className="d-flex justify-content-between align-items-center mb-3">
+                          <div className="lead font-weight-bold">
+                            Cancelled: {ev.attendee_status.cancelled}
+                          </div>
+                          <div className="lead font-weight-bold">
+                            Paid: {ev.attendee_status.paid}
+                          </div>
+                          <div className="lead font-weight-bold">
+                            Pending: {ev.attendee_status.pending}
+                          </div>
+                        </div>
+                        <button className="btn btn-primary">
+                          View Details
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              : ""}
           </div>
         </div>
       </div>

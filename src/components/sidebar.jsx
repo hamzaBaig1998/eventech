@@ -15,31 +15,40 @@ export default function Sidebar() {
         </a>
         <hr className="text-secondary d-none d-sm-block" />
         <ul className="nav nav-pill flex-column" id="navig">
-          <li className="nav-items fs-4 my-1 py-2 py-sm-0">
-            <a href="" className="nav-link fs-5 text-white" aria-current="page">
-              <i className="fs-4 bi bi-speedometer"></i>
-              <span className="ms-1  d-none d-sm-inline">
-                <NavLink to="/admin" className="text-white">
-                  Dashboard
-                </NavLink></span>
-            </a>
-          </li>
-          <li className="nav-items fs-4 my-1 py-2 py-sm-0" aria-current="page">
-            <a href="" className="nav-link fs-5 text-white">
-              <i className="fs-4 bi bi-table"></i>
-              <span className="ms-1 d-none d-sm-inline"><NavLink to="/eventlistscreen" className="text-white">
-                Events
-              </NavLink></span>
-            </a>
-          </li>
-          <li className="nav-items fs-4 my-1 py-2 py-sm-0" aria-current="page">
-            <a href="" className="nav-link fs-5 text-white">
-              <i className="fs-4 bi bi-house"></i>
-              <span className="ms-1 d-none d-sm-inline">  <NavLink to="/" className="text-white">
-                Home
-              </NavLink></span>
-            </a>
-          </li>
+          <NavLink to="/admin" className="text-white">
+            <li className="nav-items fs-4 my-1 py-2 py-sm-0">
+              <a
+                href=""
+                className="nav-link fs-5 text-white"
+                aria-current="page"
+              >
+                <i className="fs-4 bi bi-speedometer"></i>
+                <span className="ms-1  d-none d-sm-inline">Dashboard</span>
+              </a>
+            </li>
+          </NavLink>
+          <NavLink to="/eventlistscreen" className="text-white">
+            <li
+              className="nav-items fs-4 my-1 py-2 py-sm-0"
+              aria-current="page"
+            >
+              <a href="" className="nav-link fs-5 text-white">
+                <i className="fs-4 bi bi-table"></i>
+                <span className="ms-1 d-none d-sm-inline">Events</span>
+              </a>
+            </li>
+          </NavLink>
+          <NavLink to="/create-event" className="text-white">
+            <li
+              className="nav-items fs-4 my-1 py-2 py-sm-0"
+              aria-current="page"
+            >
+              <a href="" className="nav-link fs-5 text-white">
+                <i className="fs-4 bi bi-house"></i>
+                <span className="ms-1 d-none d-sm-inline"> Create Event</span>
+              </a>
+            </li>
+          </NavLink>
         </ul>
       </div>
       <div class="dropdown open">
