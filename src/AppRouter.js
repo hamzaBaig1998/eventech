@@ -16,6 +16,7 @@ import Sidebar from "./components/sidebar";
 import EventList from "./pages/admin/EventListPage";
 import EventListPage from "./pages/admin/EventListPage";
 import EditEventPage from "./pages/admin/EditEventPage";
+import EventDetailPage from "./pages/EventDetailPage";
 
 export default function AppRouter() {
   return (
@@ -34,7 +35,8 @@ export default function AppRouter() {
         <Route path="/admin" element={<AdminScreen />} />
         <Route path="/create-event" element={<CreateEventForm />} />
         <Route path="/eventlistscreen" element={<EventListPage />} />
-        <Route path="/editevent" element={<EditEventPage />} />
+        <Route path="/events/:id/edit" element={<EditEventPage />} />
+        <Route path="/events/:id/view" element={<EventDetailPage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>

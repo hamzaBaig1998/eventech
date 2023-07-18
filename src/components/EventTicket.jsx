@@ -1,7 +1,7 @@
 import react from "react";
 
 export default function EventTicket(props) {
-  const { title, description, capacity, startdate, enddate } = props;
+  const { title, description, capacity, startdate, enddate, show_btn } = props;
 
   const cardStyle = {
     boxShadow: "0 0.5rem 1rem rgba(0, 0, 0, 0.15)",
@@ -33,9 +33,13 @@ export default function EventTicket(props) {
             <strong>End Date:</strong> {props.enddate}
           </p>
         </div>
-        <a href="#" className="btn btn-primary btn-block">
-          Book Ticket
-        </a>
+        {show_btn ? (
+          <a href="#" className="btn btn-primary btn-block">
+            Book Ticket
+          </a>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

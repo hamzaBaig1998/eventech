@@ -9,6 +9,11 @@ import { API_BASE_URL } from "../../constants";
 
 export default function EventListPage() {
   const [attendees, setAttendees] = useState([]);
+  const [deleted_status, setDeletedStatus] = useState([]);
+
+  function updateDeletedStatus() {
+    setDeletedStatus(!deleted_status);
+  }
 
   useEffect(() => {
     const user_id = localStorage.getItem("user_id");
@@ -16,7 +21,7 @@ export default function EventListPage() {
       .then((response) => response.json())
       .then((data) => setAttendees(data))
       .catch((error) => console.log(error));
-  }, []);
+  }, [deleted_status]);
 
   return (
     <div className="container-fluid m-0 p-0">
@@ -32,7 +37,8 @@ export default function EventListPage() {
                   key={event.id}
                   id={event.id}
                   title={event.name}
-                  description={event.description}
+                  description={event.location}
+                  deleted={updateDeletedStatus}
                 />
               ))}
           </div>
