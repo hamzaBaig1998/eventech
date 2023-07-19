@@ -127,7 +127,6 @@ export default function AdminScreen(props) {
                           <div>
                             <button className="btn btn-primary me-5" key={i} onClick={() => handleClick(ev.name)}> QR Code</button>
 
-
                           </div>
                         </div>
                       </div>
