@@ -17,6 +17,7 @@ import EventList from "./pages/admin/EventListPage";
 import EventListPage from "./pages/admin/EventListPage";
 import EditEventPage from "./pages/admin/EditEventPage";
 import EventDetailPage from "./pages/EventDetailPage";
+import QrCodePage from "./pages/admin/QrCodePage";
 
 export default function AppRouter() {
   return (
@@ -37,6 +38,7 @@ export default function AppRouter() {
         <Route path="/eventlistscreen" element={<EventListPage />} />
         <Route path="/events/:id/edit" element={<EditEventPage />} />
         <Route path="/events/:id/view" element={<EventDetailPage />} />
+        <Route path="/events/:id/qrcode" element={<QrCodePage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>

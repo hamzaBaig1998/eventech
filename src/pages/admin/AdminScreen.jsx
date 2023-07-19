@@ -1,12 +1,37 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import Sidebar from "../../components/sidebar";
 import DashCard from "../../components/dashcard";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 import { API_BASE_URL } from "../../constants";
 
-export default function AdminScreen() {
+export default function AdminScreen(props) {
   const [attendees, setAttendees] = useState([]);
+
+  const [qrCode, setQRCode] = useState(null);
+
+
+
+  const handleClick = () => {
+    const data = 'https://medium.com/@etanimanolcastro/how-to-create-a-qr-code-model-with-django-framework-dfd465b99e68';
+    fetch(`${API_BASE_URL}/admin/generate-qrcode/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ data }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setQRCode(data.qrcode);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+
+
+  };
 
   useEffect(() => {
     const user_id = localStorage.getItem("user_id");
@@ -18,6 +43,12 @@ export default function AdminScreen() {
       })
       .catch((error) => console.log(error));
   }, []);
+
+  useEffect(() => {
+    //   handleClick()
+
+  }, []);
+
 
   return (
     <div className="container-fluid m-0 p-0">
@@ -53,33 +84,51 @@ export default function AdminScreen() {
           <h1 className="display-5">Events</h1>
           <div className="row">
             {attendees.events
-              ? attendees.events.map((ev) => (
-                  <div className="col-lg-4 col-md-6 mb-4">
-                    <div className="card bg-primary text-white border-0 shadow-sm">
-                      <div className="card-body">
-                        <h5 className="card-title">{ev.name}</h5>
-                        <div className="d-flex justify-content-between align-items-center mb-3">
-                          <div className="lead font-weight-bold">
-                            Cancelled: {ev.attendee_status.cancelled}
-                          </div>
-                          <div className="lead font-weight-bold">
-                            Paid: {ev.attendee_status.paid}
-                          </div>
-                          <div className="lead font-weight-bold">
-                            Pending: {ev.attendee_status.pending}
+              ? attendees.events.map((ev, i) => (
+                <div className="col-lg-4 col-md-6 mb-4" key={i}>
+                  <div className="card bg-primary text-white border-0 shadow-sm pl-2">
+                    <div className="card-body">
+                      <h5 className="card-title">{ev.name}</h5>
+                      <div className="d-flex justify-content-between align-items-center mb-3">
+                        <div className="lead font-weight-bold">
+                          Cancelled: {ev.attendee_status.cancelled}
+                        </div>
+                        <div className="lead font-weight-bold">
+                          Paid: {ev.attendee_status.paid}
+                        </div>
+                        <div className="lead font-weight-bold">
+                          Pending: {ev.attendee_status.pending}
+                        </div>
+                      </div>
+                      <div class="row   justify-content-between">
+                        <div className="col-3">
+                          <button className="btn btn-primary">
+                            View Details
+                          </button>
+                        </div>
+                        <div className="col-3 me-5">
+                          {/* <NavLink to={`/events/${props.id}/qrcode`} target="_blank">
+                            <button className="btn btn-primary">
+                              QR Code
+                            </button>
+                          </NavLink> */}
+                          <div>
+                            <button className="btn btn-primary me-5" key={i} onClick={handleClick}> QR Code</button>
+
+
                           </div>
                         </div>
-                        <button className="btn btn-primary">
-                          View Details
-                        </button>
                       </div>
                     </div>
                   </div>
-                ))
+                </div>
+              ))
               : ""}
+            {qrCode && <img src={`data:image/png;base64,${qrCode}`} alt="QR Code" />}
           </div>
         </div>
       </div>
     </div>
   );
 }
+
