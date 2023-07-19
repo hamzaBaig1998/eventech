@@ -15,19 +15,20 @@ export default function AdminScreen(props) {
 
 
 
-  const handleClick = async (title) => {
+  const handleClick = async (title, id) => {
 
     const user_id = localStorage.getItem("user_id");
     // const title = localStorage.getItem("first_name");
-    const data = title; // Replace with the actual data
+    const data = { 'title': title, 'event_id': id, 'user_id': user_id }; // Replace with the actual data
 
-    const formData = new FormData();
-    formData.append('data', data);
+
+    // const formData = new FormData();
+    // formData.append('data', data);
 
     try {
       const response = await fetch(`${API_BASE_URL}/admin/generate-qrcode/`, {
         method: 'POST',
-        body: formData,
+        body: JSON.stringify(data),
       });
 
       if (!response.ok) {
@@ -125,7 +126,7 @@ export default function AdminScreen(props) {
                             </button>
                           </NavLink> */}
                           <div>
-                            <button className="btn btn-primary me-5" key={i} onClick={() => handleClick(ev.name)}> QR Code</button>
+                            <button className="btn btn-primary me-5" key={i} onClick={() => handleClick(ev.name, ev.id)}> QR Code</button>
 
                           </div>
                         </div>
