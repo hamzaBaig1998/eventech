@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from 'react-router-dom';
+import QRCode from 'qrcode.react';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import NavBar from "../../components/NavBar";
@@ -12,12 +13,19 @@ import { API_BASE_URL } from "../../constants";
 
 export default function QrCodePage() {
     const location = useLocation();
-    const qrCode = location.state?.qrCode || 'No data passed';
+    const user_id = location.state?.user_id || 'No data passed';
     const title = location.state?.title || 'Event';
+    const event_id = location.state?.event_id || 'No data passed';
     const handleClick = async (data) => {
         const pdf = new jsPDF();
         pdf.text(`Event: ${title}`, 10, 9);
-        pdf.addImage(qrCode, 'PNG', 10, 10, 50, 50);
+
+        const qrCodeDataURL = document.getElementById('canvas').toDataURL();
+
+        // Add the QR code image to the PDF
+        pdf.addImage(qrCodeDataURL, 'PNG', 10, 10, 50, 50);
+
+        // Save the PDF with the QR code
         pdf.save(`${title}-qrcode.pdf`);
     }
 
@@ -29,15 +37,16 @@ export default function QrCodePage() {
                     <h1 className="display-4 text-center">Admin Dashboard</h1>
                     <div className="row">
                         <h1>{title}</h1>
-                        <div className="container">
-                            <div>
-                                <button className="btn btn-primary m-2" onClick={() => handleClick()}> Export PDF</button>
 
-                            </div>
-                            <div className="col-md-4 px-0">
-                                <img src={`data:image/png;base64,${qrCode}`} className="img-thumbnail" alt="QR Code" />
-                            </div>
+                        <div>
+                            <button className="btn btn-primary my-4" onClick={() => handleClick()}> Export PDF</button>
+
                         </div>
+                        <div className="col-md-4 px-3">
+                            <QRCode id="canvas" value={title} />
+                            {/* <img src={`data:image/png;base64,${qrCode}`} className="img-thumbnail" alt="QR Code" /> */}
+                        </div>
+
                         {/* {attendees.events &&
               attendees.events.map((event) => (
                 <EventList

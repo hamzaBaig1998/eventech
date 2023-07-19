@@ -10,7 +10,7 @@ import { API_BASE_URL } from "../../constants";
 export default function AdminScreen(props) {
   const [attendees, setAttendees] = useState([]);
 
-  const [qrCode, setQRCode] = useState(null);
+
   const navigate = useNavigate();
 
 
@@ -18,29 +18,10 @@ export default function AdminScreen(props) {
   const handleClick = async (title, id) => {
 
     const user_id = localStorage.getItem("user_id");
-    // const title = localStorage.getItem("first_name");
+
     const data = { 'title': title, 'event_id': id, 'user_id': user_id }; // Replace with the actual data
 
-
-    // const formData = new FormData();
-    // formData.append('data', data);
-
-    try {
-      const response = await fetch(`${API_BASE_URL}/admin/generate-qrcode/`, {
-        method: 'POST',
-        body: JSON.stringify(data),
-      });
-
-      if (!response.ok) {
-        throw new Error('Error generating QR code');
-      }
-
-      const result = await response.json();
-      setQRCode(result.qrcode);
-      navigate(`/events/${user_id}/qrcode`, { state: { qrCode: result.qrcode, title: title } });
-    } catch (error) {
-      console.error('Error:', error);
-    }
+    navigate(`/events/${id}/qrcode`, { state: { title: title, user_id: user_id, event_id: id } });
 
 
 

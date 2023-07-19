@@ -42,6 +42,7 @@ export default function AppRouter() {
         <Route path="/eventlistscreen" element={<EventListPage />} />
         <Route path="/events/:id/edit" element={<EditEventPage />} />
         <Route path="/events/:id/view" element={<EventDetailPage />} />
+        <Route path="/events/:id/qrcode" element={<QrCodePage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>
