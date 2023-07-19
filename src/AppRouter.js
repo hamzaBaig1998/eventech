@@ -17,6 +17,10 @@ import EventList from "./pages/admin/EventListPage";
 import EventListPage from "./pages/admin/EventListPage";
 import EditEventPage from "./pages/admin/EditEventPage";
 import EventDetailPage from "./pages/EventDetailPage";
+import AttendeePortal from "./pages/attendee/AttendeePortal";
+import RequestedEventsPage from "./pages/attendee/RequestedEventsPage";
+import RequestEventPage from "./pages/attendee/RequestEventPage";
+import RegisterEventPage from "./pages/attendee/RegisterEventPage";
 
 export default function AppRouter() {
   return (
@@ -37,6 +41,13 @@ export default function AppRouter() {
         <Route path="/eventlistscreen" element={<EventListPage />} />
         <Route path="/events/:id/edit" element={<EditEventPage />} />
         <Route path="/events/:id/view" element={<EventDetailPage />} />
+
+        {/* Attendee Routes */}
+        <Route path="/attendee-portal" element={<AttendeePortal />} />
+        <Route path="/requested-events" element={<RequestedEventsPage />} />
+        <Route path="/request-event" element={<RequestEventPage />} />
+        <Route path="/register-event" element={<RegisterEventPage />} />
+
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>
