@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import Sidebar from "../../components/sidebar";
 import DashCard from "../../components/dashcard";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -10,11 +11,15 @@ export default function AdminScreen(props) {
   const [attendees, setAttendees] = useState([]);
 
   const [qrCode, setQRCode] = useState(null);
+  const navigate = useNavigate();
 
 
 
-  const handleClick = async () => {
-    const data = 'Your QR code data'; // Replace with the actual data
+  const handleClick = async (title) => {
+
+    const user_id = localStorage.getItem("user_id");
+    // const title = localStorage.getItem("first_name");
+    const data = title; // Replace with the actual data
 
     const formData = new FormData();
     formData.append('data', data);
@@ -31,6 +36,7 @@ export default function AdminScreen(props) {
 
       const result = await response.json();
       setQRCode(result.qrcode);
+      navigate(`/events/${user_id}/qrcode`, { state: { qrCode: result.qrcode, title: title } });
     } catch (error) {
       console.error('Error:', error);
     }
@@ -119,7 +125,7 @@ export default function AdminScreen(props) {
                             </button>
                           </NavLink> */}
                           <div>
-                            <button className="btn btn-primary me-5" key={i} onClick={handleClick}> QR Code</button>
+                            <button className="btn btn-primary me-5" key={i} onClick={() => handleClick(ev.name)}> QR Code</button>
 
 
                           </div>
@@ -130,7 +136,7 @@ export default function AdminScreen(props) {
                 </div>
               ))
               : ""}
-            {qrCode && <img src={`data:image/png;base64,${qrCode}`} alt="QR Code" />}
+            {/* {qrCode && <img src={`data:image/png;base64,${qrCode}`} alt="QR Code" />} */}
           </div>
         </div>
       </div>
