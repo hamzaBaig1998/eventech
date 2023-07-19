@@ -13,22 +13,28 @@ export default function AdminScreen(props) {
 
 
 
-  const handleClick = () => {
-    const data = 'https://medium.com/@etanimanolcastro/how-to-create-a-qr-code-model-with-django-framework-dfd465b99e68';
-    fetch(`${API_BASE_URL}/admin/generate-qrcode/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ data }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setQRCode(data.qrcode);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
+  const handleClick = async () => {
+    const data = 'Your QR code data'; // Replace with the actual data
+
+    const formData = new FormData();
+    formData.append('data', data);
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/admin/generate-qrcode/`, {
+        method: 'POST',
+        body: formData,
       });
+
+      if (!response.ok) {
+        throw new Error('Error generating QR code');
+      }
+
+      const result = await response.json();
+      setQRCode(result.qrcode);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+
 
 
   };
