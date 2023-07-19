@@ -1,7 +1,7 @@
 import react from "react";
 import { NavLink } from "react-router-dom";
 
-export default function Sidebar() {
+export default function AttendeeSidebar() {
   return (
     <div className="bg-primary col-auto col-md-2 min-vh-100 d-flex justify-content-between flex-column pt-3 px-0">
       <div>
@@ -15,7 +15,7 @@ export default function Sidebar() {
         </a>
         <hr className="text-secondary d-none d-sm-block" />
         <ul className="nav nav-pill flex-column" id="navig">
-          <NavLink to="/admin" className="text-white">
+          <NavLink to="/attendee-portal" className="text-white">
             <li className="nav-items fs-4 my-1 py-2 py-sm-0">
               <a
                 href=""
@@ -27,25 +27,36 @@ export default function Sidebar() {
               </a>
             </li>
           </NavLink>
-          <NavLink to="/eventlistscreen" className="text-white">
+          <NavLink to="/register-event" className="text-white">
             <li
               className="nav-items fs-4 my-1 py-2 py-sm-0"
               aria-current="page"
             >
               <a href="" className="nav-link fs-5 text-white">
                 <i className="fs-4 bi bi-table"></i>
-                <span className="ms-1 d-none d-sm-inline">Events</span>
+                <span className="ms-1 d-none d-sm-inline">Register Events</span>
               </a>
             </li>
           </NavLink>
-          <NavLink to="/create-event" className="text-white">
+          <NavLink to="/request-event" className="text-white">
             <li
               className="nav-items fs-4 my-1 py-2 py-sm-0"
               aria-current="page"
             >
               <a href="" className="nav-link fs-5 text-white">
                 <i className="fs-4 bi bi-house"></i>
-                <span className="ms-1 d-none d-sm-inline"> Create Event</span>
+                <span className="ms-1 d-none d-sm-inline">Request Event</span>
+              </a>
+            </li>
+          </NavLink>
+          <NavLink to="/requested-events" className="text-white">
+            <li
+              className="nav-items fs-4 my-1 py-2 py-sm-0"
+              aria-current="page"
+            >
+              <a href="" className="nav-link fs-5 text-white">
+                <i className="fs-4 bi bi-house"></i>
+                <span className="ms-1 d-none d-sm-inline">My Requests</span>
               </a>
             </li>
           </NavLink>

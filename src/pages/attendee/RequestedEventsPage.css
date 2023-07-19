@@ -1,0 +1,41 @@
+.requested-events-container {
+  margin-top: 50px;
+}
+
+.requested-events-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.requested-event {
+  margin-bottom: 50px;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.requested-event-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.requested-event-header h3 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.requested-event-details {
+  margin-top: 20px;
+}
+
+.requested-event-requester {
+  margin-top: 20px;
+}
+
+.requested-event-requester p {
+  margin: 0;
+  font-size: 14px;
+}

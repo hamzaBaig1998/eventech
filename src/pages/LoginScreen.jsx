@@ -12,7 +12,7 @@ export default function LoginScreen() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("called");
+
     fetch(`${API_BASE_URL}/admin-signin/`, {
       method: "POST",
       headers: {
@@ -33,6 +33,7 @@ export default function LoginScreen() {
       .then((data) => {
         console.log(data);
         localStorage.setItem("user_id", data.user_id);
+        localStorage.setItem("username", data.username);
         // Redirect the user to the dashboard page
         navigate("/admin");
       })
