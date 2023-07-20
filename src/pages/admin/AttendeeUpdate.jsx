@@ -29,6 +29,7 @@ const AttendeeUpdate = () => {
                     throw new Error('Network response was not ok');
                 }
                 // Success! The `attended` field is updated on the Django side
+                setIsUpdating(true);
             })
             .catch((error) => {
                 console.error('Error updating attended status:', error);
