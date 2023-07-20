@@ -22,6 +22,7 @@ import RequestedEventsPage from "./pages/attendee/RequestedEventsPage";
 import RequestEventPage from "./pages/attendee/RequestEventPage";
 import RegisterEventPage from "./pages/attendee/RegisterEventPage";
 import QrCodePage from "./pages/admin/QrCodePage";
+import AttendeeUpdate from "./pages/admin/AttendeeUpdate";
 
 export default function AppRouter() {
   return (
@@ -43,6 +44,7 @@ export default function AppRouter() {
         <Route path="/events/:id/edit" element={<EditEventPage />} />
         <Route path="/events/:id/view" element={<EventDetailPage />} />
         <Route path="/events/:id/qrcode" element={<QrCodePage />} />
+        <Route path="/admin/update_attended/:event_id/:user_id" element={<AttendeeUpdate />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>

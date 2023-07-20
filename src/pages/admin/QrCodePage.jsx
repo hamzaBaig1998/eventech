@@ -9,7 +9,7 @@ import DashCard from "../../components/dashcard";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import EventList from "../../components/EventList";
 
-import { API_BASE_URL } from "../../constants";
+import { API_BASE_URL, APP_BASE_URL } from "../../constants";
 
 export default function QrCodePage() {
     const location = useLocation();
@@ -24,6 +24,7 @@ export default function QrCodePage() {
 
         // Add the QR code image to the PDF
         pdf.addImage(qrCodeDataURL, 'PNG', 10, 10, 50, 50);
+        pdf.text(`URL: ${APP_BASE_URL}/admin/update_attended/${event_id}/${user_id}`, 10, 70);
 
         // Save the PDF with the QR code
         pdf.save(`${title}-qrcode.pdf`);
@@ -43,7 +44,7 @@ export default function QrCodePage() {
 
                         </div>
                         <div className="col-md-4 px-3">
-                            <QRCode id="canvas" value={title} />
+                            <QRCode id="canvas" value={`${APP_BASE_URL}/admin/update_attended/${event_id}/${user_id}`} />
                             {/* <img src={`data:image/png;base64,${qrCode}`} className="img-thumbnail" alt="QR Code" /> */}
                         </div>
 

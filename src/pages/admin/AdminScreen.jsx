@@ -5,7 +5,7 @@ import Sidebar from "../../components/sidebar";
 import DashCard from "../../components/dashcard";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-import { API_BASE_URL } from "../../constants";
+import { API_BASE_URL, APP_BASE_URL } from "../../constants";
 
 export default function AdminScreen(props) {
   const [attendees, setAttendees] = useState([]);
