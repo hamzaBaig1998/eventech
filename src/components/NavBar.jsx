@@ -45,7 +45,7 @@ export default function NavBar() {
             {/* <a href="#" class="nav-link">
               Join
             </a> */}
-            <NavLink to="/login" className={"nav-link"}>
+            <NavLink to="/join" className={"nav-link"}>
               Join
             </NavLink>
           </li>

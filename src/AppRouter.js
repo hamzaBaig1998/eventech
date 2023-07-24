@@ -23,12 +23,18 @@ import RequestEventPage from "./pages/attendee/RequestEventPage";
 import RegisterEventPage from "./pages/attendee/RegisterEventPage";
 import QrCodePage from "./pages/admin/QrCodePage";
 import AttendeeUpdate from "./pages/admin/AttendeeUpdate";
+import JoinPage from "./pages/JoinPage";
+import AdminSignup from "./pages/admin/AdminSignup";
+import RegisterAttendeePage from "./pages/attendee/RegisterAttendeePage";
+import AttendeeLogin from "./pages/attendee/AttendeeLogin";
+import AuthRoute from "./AuthRoute";
 
 export default function AppRouter() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/join" element={<JoinPage />} />
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/registeradmin" element={<RegisterAdminScreen />} />
         <Route path="/registercompany" element={<RegisterCompanyScreen />} />
@@ -44,7 +50,29 @@ export default function AppRouter() {
         <Route path="/events/:id/edit" element={<EditEventPage />} />
         <Route path="/events/:id/view" element={<EventDetailPage />} />
         <Route path="/events/:id/qrcode" element={<QrCodePage />} />
-        <Route path="/admin/update_attended/:event_id/:user_id" element={<AttendeeUpdate />} />
+        <Route
+          path="/admin/update_attended/:event_id/:user_id"
+          element={<AttendeeUpdate />}
+        />
+        {/* Admin routes */}
+        <Route path="/admin-signup" element={<AdminSignup />} />
+
+        {/* Attendee Routes */}
+        <Route path="/register-attendee" element={<RegisterAttendeePage />} />
+        <Route path="/login-attendee" element={<AttendeeLogin />} />
+        {/* <Route path="/attendee-portal" element={<AttendeePortal />} /> */}
+        {/* <AuthRoute path="/attendee-portal" element={<AttendeePortal />} /> */}
+        <Route
+          path="/attendee-portal"
+          element={
+            <AuthRoute>
+              <AttendeePortal />
+            </AuthRoute>
+          }
+        />
+        <Route path="/requested-events" element={<RequestedEventsPage />} />
+        <Route path="/request-event" element={<RequestEventPage />} />
+        <Route path="/register-event" element={<RegisterEventPage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>
