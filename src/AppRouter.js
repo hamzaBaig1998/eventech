@@ -20,6 +20,7 @@ import EventDetailPage from "./pages/EventDetailPage";
 import AttendeePortal from "./pages/attendee/AttendeePortal";
 import RequestedEventsPage from "./pages/attendee/RequestedEventsPage";
 import RequestEventPage from "./pages/attendee/RequestEventPage";
+import RequestEventAdminPage from "./pages/admin/RequestedEventsPage";
 import RegisterEventPage from "./pages/attendee/RegisterEventPage";
 import QrCodePage from "./pages/admin/QrCodePage";
 import AttendeeUpdate from "./pages/admin/AttendeeUpdate";
@@ -28,6 +29,7 @@ import AdminSignup from "./pages/admin/AdminSignup";
 import RegisterAttendeePage from "./pages/attendee/RegisterAttendeePage";
 import AttendeeLogin from "./pages/attendee/AttendeeLogin";
 import AuthRoute from "./AuthRoute";
+import EventFeedback from "./pages/admin/EventFeedback";
 
 export default function AppRouter() {
   return (
@@ -126,11 +128,21 @@ export default function AppRouter() {
             </AuthRoute>
           }
         />
+        {/* Attendee requested events */}
         <Route
           path="/requested-events"
           element={
             <AuthRoute>
               <RequestedEventsPage />
+            </AuthRoute>
+          }
+        />
+        {/* Admin requested events */}
+        <Route
+          path="/requested-events-admin"
+          element={
+            <AuthRoute>
+              <RequestEventAdminPage />
             </AuthRoute>
           }
         />
@@ -149,6 +161,14 @@ export default function AppRouter() {
           element={
             <AuthRoute>
               <RegisterEventPage />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="/event-feedback/:user_id"
+          element={
+            <AuthRoute>
+              <EventFeedback />
             </AuthRoute>
           }
         />
