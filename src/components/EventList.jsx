@@ -23,7 +23,7 @@ export default function EventList(props) {
   };
 
   return (
-    <ul className="list-group">
+    <ul className="list-group my-2">
       <li
         className="list-group-item d-flex justify-content-between align-items-start"
         id={props.id}
@@ -32,6 +32,11 @@ export default function EventList(props) {
           <div className="fw-bold">{props.title}</div>
           {props.description}
         </div>
+        <NavLink to={`/event-feedback/${props.id}`}>
+          <button className="btn btn-primary" type="button">
+            Feedback
+          </button>
+        </NavLink>
         <NavLink to={`/events/${props.id}/view`}>
           <button className="btn btn-primary" type="button">
             View

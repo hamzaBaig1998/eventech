@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AttendeeSidebar from "../../components/AttendeeSidebar";
 import { API_BASE_URL } from "../../constants";
 
@@ -6,7 +6,7 @@ export default function RequestEventPage() {
   const attendeeId = localStorage.getItem("user_id");
   const [eventData, setEventData] = useState({
     attendee: attendeeId,
-    admin: 1,
+    admin: "",
     event_name: "",
     event_description: "",
     event_location: "",
@@ -14,6 +14,18 @@ export default function RequestEventPage() {
     requester_email: "",
     requester_phone_number: "",
   });
+  const [adminList, setAdminList] = useState([]);
+
+  useEffect(() => {
+    fetch(`${API_BASE_URL}/admin-list/`)
+      .then((response) => response.json())
+      .then((data) => {
+        setAdminList(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -30,7 +42,7 @@ export default function RequestEventPage() {
         // Clear form data after successful submission
         setEventData({
           attendee: localStorage.getItem("user_id"),
-          admin: 1,
+          admin: "",
           event_name: "",
           event_description: "",
           event_location: "",
@@ -38,6 +50,8 @@ export default function RequestEventPage() {
           requester_email: "",
           requester_phone_number: "",
         });
+        // const msg = JSON.stringify(data);
+        alert("Request submitted");
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -129,6 +143,24 @@ export default function RequestEventPage() {
                 onChange={handleChange}
                 required
               />
+            </div>
+            <div className="form-group">
+              <label htmlFor="admin">Admin</label>
+              <select
+                className="form-control"
+                id="admin"
+                name="admin"
+                value={eventData.admin}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Select an admin</option>
+                {adminList.map((admin) => (
+                  <option key={admin.id} value={admin.id}>
+                    {admin.username}
+                  </option>
+                ))}
+              </select>
             </div>
             <button type="submit" className="btn btn-primary">
               Submit
