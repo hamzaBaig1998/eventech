@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getCookie } from '../../csrfUtils';
+
 import { API_BASE_URL, APP_BASE_URL } from "../../constants";
 
 const AttendeeUpdate = () => {
     const { event_id, user_id } = useParams();
     const [IsUpdating, setIsUpdating] = useState(false);
-    const csrfToken = getCookie('csrftoken');
 
     useEffect(() => {
         // Send a request to the Django server to update the `attended` field
@@ -14,16 +13,14 @@ const AttendeeUpdate = () => {
     }, [user_id, event_id]);
 
     const updateAttendedStatus = (userId, eventId) => {
-        const userId1 = localStorage.getItem("user_id");
         // Perform the API request to your Django server
         // Replace 'YOUR_API_ENDPOINT' with the actual endpoint to update the 'attended' field
-        const apiUrl = `${API_BASE_URL}/admin/update_attended_status_backend/${userId1}/${eventId}`;
+        const apiUrl = `${API_BASE_URL}/admin/update_attended_status_backend/${userId}/${eventId}`;
 
         fetch(apiUrl, {
             method: 'PUT', // or 'PATCH' if you prefer
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRFToken': csrfToken,
             },
             body: JSON.stringify({ attended: true }),
         })
@@ -48,8 +45,7 @@ const AttendeeUpdate = () => {
             {IsUpdating ? (
                 <p>Updated Attendance</p>
             ) : (
-                <p>Updating Attendence  {csrfToken}</p>
-
+                <p>Updateing Attendence</p>
             )}
 
 

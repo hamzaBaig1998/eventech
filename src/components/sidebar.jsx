@@ -72,17 +72,6 @@ export default function Sidebar() {
               </a>
             </li>
           </NavLink>
-          <NavLink to="/registered_attendee" className="text-white">
-            <li
-              className="nav-items fs-4 my-1 py-2 py-sm-0"
-              aria-current="page"
-            >
-              <a href="" className="nav-link fs-5 text-white">
-                <i className="fs-4 bi bi-table"></i>
-                <span className="ms-1 d-none d-sm-inline">Attendance</span>
-              </a>
-            </li>
-          </NavLink>
         </ul>
       </div>
       <div className="dropdown open">

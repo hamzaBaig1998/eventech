@@ -31,7 +31,6 @@ import AttendeeLogin from "./pages/attendee/AttendeeLogin";
 import AuthRoute from "./AuthRoute";
 import EventFeedback from "./pages/admin/EventFeedback";
 import FeedbackPage from "./pages/attendee/FeedbackPage";
-import RegisteredAttendee from "./pages/admin/RegisteredAttendee";
 
 export default function AppRouter() {
   return (
@@ -48,7 +47,6 @@ export default function AppRouter() {
         <Route path="/profilepage" element={<ProfilePage />} />
         <Route path="/ticket" element={<ShowTicket />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/registered_attendee" element={<RegisteredAttendee />} />
         <Route
           path="/admin"
           element={
