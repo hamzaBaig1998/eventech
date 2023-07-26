@@ -7,7 +7,8 @@ export default function RequestedEventsPage() {
   const [requestedEvents, setRequestedEvents] = useState([]);
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/event-requests/attendee/1/`)
+    const attendeeId = localStorage.getItem("user_id");
+    fetch(`${API_BASE_URL}/event-requests/attendee/${attendeeId}/`)
       .then((response) => response.json())
       .then((data) => {
         setRequestedEvents(data);

@@ -44,16 +44,72 @@ export default function AppRouter() {
         <Route path="/profilepage" element={<ProfilePage />} />
         <Route path="/ticket" element={<ShowTicket />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/admin" element={<AdminScreen />} />
-        <Route path="/create-event" element={<CreateEventForm />} />
-        <Route path="/eventlistscreen" element={<EventListPage />} />
-        <Route path="/events/:id/edit" element={<EditEventPage />} />
-        <Route path="/events/:id/view" element={<EventDetailPage />} />
-        <Route path="/events/:id/qrcode" element={<QrCodePage />} />
+        <Route
+          path="/admin"
+          element={
+            <AuthRoute>
+              <AdminScreen />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="/create-event"
+          element={
+            <AuthRoute>
+              <CreateEventForm />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="/eventlistscreen"
+          element={
+            <AuthRoute>
+              <EventListPage />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="/events/:id/edit"
+          element={
+            <AuthRoute>
+              <EditEventPage />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="/events/:id/view"
+          element={
+            <AuthRoute>
+              <EventDetailPage />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="/events/:id/qrcode"
+          element={
+            <AuthRoute>
+              <QrCodePage />
+            </AuthRoute>
+          }
+        />
+        {/* <Route path="/admin" element={<AdminScreen />} /> */}
+        {/* <Route path="/create-event" element={<CreateEventForm />} /> */}
+        {/* <Route path="/eventlistscreen" element={<EventListPage />} /> */}
+        {/* <Route path="/events/:id/edit" element={<EditEventPage />} /> */}
+        {/* <Route path="/events/:id/view" element={<EventDetailPage />} /> */}
+        {/* <Route path="/events/:id/qrcode" element={<QrCodePage />} /> */}
         <Route
           path="/admin/update_attended/:event_id/:user_id"
-          element={<AttendeeUpdate />}
+          element={
+            <AuthRoute>
+              <AttendeeUpdate />
+            </AuthRoute>
+          }
         />
+        {/* <Route
+          path="/admin/update_attended/:event_id/:user_id"
+          element={<AttendeeUpdate />}
+        /> */}
         {/* Admin routes */}
         <Route path="/admin-signup" element={<AdminSignup />} />
 
@@ -70,9 +126,33 @@ export default function AppRouter() {
             </AuthRoute>
           }
         />
-        <Route path="/requested-events" element={<RequestedEventsPage />} />
-        <Route path="/request-event" element={<RequestEventPage />} />
-        <Route path="/register-event" element={<RegisterEventPage />} />
+        <Route
+          path="/requested-events"
+          element={
+            <AuthRoute>
+              <RequestedEventsPage />
+            </AuthRoute>
+          }
+        />
+        {/* <Route path="/requested-events" element={<RequestedEventsPage />} /> */}
+        {/* <Route path="/request-event" element={<RequestEventPage />} /> */}
+        <Route
+          path="/request-event"
+          element={
+            <AuthRoute>
+              <RequestEventPage />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="/register-event"
+          element={
+            <AuthRoute>
+              <RegisterEventPage />
+            </AuthRoute>
+          }
+        />
+        {/* <Route path="/register-event" element={<RegisterEventPage />} /> */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>

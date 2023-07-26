@@ -1,7 +1,8 @@
 import react from "react";
 
 export default function EventTicket(props) {
-  const { title, description, capacity, startdate, enddate, show_btn } = props;
+  const { title, description, capacity, startdate, img, enddate, show_btn } =
+    props;
 
   const cardStyle = {
     boxShadow: "0 0.5rem 1rem rgba(0, 0, 0, 0.15)",
@@ -16,7 +17,7 @@ export default function EventTicket(props) {
 
   return (
     <div className="card w-25" style={cardStyle}>
-      <img src={`${props.img}`} className="card-img-top p-3" alt="..." />
+      {img ? <img src={`${img}`} className="card-img-top p-3" alt="..." /> : ""}
       <div className="card-body">
         <h5 className="card-title">{props.title} </h5>
         <div style={infoStyle}>

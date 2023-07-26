@@ -1,7 +1,16 @@
-import react from "react";
-import { NavLink } from "react-router-dom";
+import React from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Sidebar() {
+  const history = useNavigate();
+
+  const handleLogout = () => {
+    // clear localStorage
+    localStorage.clear();
+    // navigate to /join
+    history("/join");
+  };
+
   return (
     <div className="bg-primary col-auto col-md-2 min-vh-100 d-flex justify-content-between flex-column pt-3 px-0">
       <div>
@@ -51,9 +60,9 @@ export default function Sidebar() {
           </NavLink>
         </ul>
       </div>
-      <div class="dropdown open">
+      <div className="dropdown open">
         <a
-          class=" text-white dropdown-toggle p-3"
+          className="text-white dropdown-toggle p-3"
           type="button"
           id="triggerId"
           data-bs-toggle="dropdown"
@@ -65,8 +74,8 @@ export default function Sidebar() {
             {localStorage.getItem("username")}
           </span>
         </a>
-        <div class="dropdown-menu" aria-labelledby="triggerId">
-          <a class="dropdown-item" href="#">
+        <div className="dropdown-menu" aria-labelledby="triggerId">
+          <a className="dropdown-item" href="#" onClick={handleLogout}>
             Logout
           </a>
         </div>

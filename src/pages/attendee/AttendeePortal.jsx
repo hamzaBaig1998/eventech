@@ -11,7 +11,7 @@ export default function AttendeePortal() {
 
   useEffect(() => {
     const user_id = localStorage.getItem("user_id");
-    fetch(`${API_BASE_URL}/attendees/1/events/`)
+    fetch(`${API_BASE_URL}/attendees/${user_id}/events/`)
       .then((response) => response.json())
       .then((data) => {
         setAttendees(data);
@@ -21,8 +21,9 @@ export default function AttendeePortal() {
   }, []);
 
   const handleCancel = (eventId) => {
+    const user_id = localStorage.getItem("user_id");
     const data = {
-      attendee_id: 1,
+      attendee_id: user_id,
       event_id: eventId,
     };
 
@@ -39,7 +40,7 @@ export default function AttendeePortal() {
         }
         console.log("Event cancellation successful!");
         // Refresh the list of events
-        fetch(`${API_BASE_URL}/attendees/1/events/`)
+        fetch(`${API_BASE_URL}/attendees/${user_id}/events/`)
           .then((response) => response.json())
           .then((data) => {
             setAttendees(data);
@@ -66,7 +67,7 @@ export default function AttendeePortal() {
                 icon={"people-fill"}
                 color={"black"}
               />
-              <DashCard
+              {/* <DashCard
                 count={"3123"}
                 title={"Sales"}
                 icon={"people-fill"}
@@ -77,7 +78,7 @@ export default function AttendeePortal() {
                 title={"Attendees"}
                 icon={"people-fill"}
                 color={"black"}
-              />
+              /> */}
             </div>
           ) : (
             ""

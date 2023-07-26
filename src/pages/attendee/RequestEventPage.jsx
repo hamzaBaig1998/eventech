@@ -3,8 +3,9 @@ import AttendeeSidebar from "../../components/AttendeeSidebar";
 import { API_BASE_URL } from "../../constants";
 
 export default function RequestEventPage() {
+  const attendeeId = localStorage.getItem("user_id");
   const [eventData, setEventData] = useState({
-    attendee: 1,
+    attendee: attendeeId,
     admin: 1,
     event_name: "",
     event_description: "",
@@ -28,7 +29,7 @@ export default function RequestEventPage() {
         console.log("Success:", data);
         // Clear form data after successful submission
         setEventData({
-          attendee: 1,
+          attendee: localStorage.getItem("user_id"),
           admin: 1,
           event_name: "",
           event_description: "",

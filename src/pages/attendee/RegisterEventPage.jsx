@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import AttendeeSidebar from "../../components/AttendeeSidebar";
+import { API_BASE_URL } from "../../constants";
 
 export default function RegisterEventPage() {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/events/")
+    fetch(`${API_BASE_URL}/events/`)
       .then((response) => response.json())
       .then((data) => {
         setEvents(data);
@@ -15,7 +16,8 @@ export default function RegisterEventPage() {
       });
   }, []);
 
-  const handleRegister = (eventId, attendeeId) => {
+  const handleRegister = (eventId) => {
+    const attendeeId = localStorage.getItem("user_id");
     const data = {
       event_id: eventId,
       attendee_id: attendeeId,
@@ -23,19 +25,26 @@ export default function RegisterEventPage() {
       payment_amount: 100.0,
     };
 
-    fetch("http://localhost:8000/api/register-event/", {
+    fetch(`${API_BASE_URL}/register-event/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
+      .then((response) => response.json())
+      .then((data) => {
+        // const msg = JSON.stringify(data);
+        // console.log(msg);
+        // alert(msg);
+        if ("error" in data) {
+          alert("Error: " + data.error);
+        } else if ("message" in data) {
+          alert("Message: " + data.message);
+        } else {
+          const msg = JSON.stringify(data);
+          alert(msg);
         }
-        console.log("Registration successful!");
-        alert("Registration Successful");
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -88,7 +97,7 @@ export default function RegisterEventPage() {
                     <button
                       type="button"
                       className="btn btn-primary"
-                      onClick={() => handleRegister(event.id, 1)}
+                      onClick={() => handleRegister(event.id)}
                     >
                       Register
                     </button>

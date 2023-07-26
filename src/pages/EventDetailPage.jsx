@@ -17,7 +17,7 @@ export default function EventDetailPage() {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/events/${id}`);
+        const response = await fetch(`${API_BASE_URL}/events/${id}/`);
         const data = await response.json();
         setEvent(data);
         setLoading(false);
@@ -36,7 +36,7 @@ export default function EventDetailPage() {
         <div className="container-fluid px-5">
           <h1 className="display-4 text-center">Event Detail Page</h1>
           <div className="d-flex  justify-content-center align-items-center">
-            {loading ? (
+            {/* {loading ? (
               <p>Loading...</p>
             ) : (
               <EventTicket
@@ -48,6 +48,19 @@ export default function EventDetailPage() {
                 capacity={event.max_attendees}
                 showbtn={false}
               />
+            )} */}
+            {event ? (
+              <EventTicket
+                img={event.event_image}
+                title={event.name}
+                description={event.description}
+                startdate={event.start_date}
+                enddate={event.end_date}
+                capacity={event.max_attendees}
+                showbtn={false}
+              />
+            ) : (
+              ""
             )}
             {/* TODO: add slider to increase number of tickets user can buy */}
           </div>
