@@ -5,6 +5,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 import { API_BASE_URL } from "../../constants";
 import AttendeeSidebar from "../../components/AttendeeSidebar";
+import { NavLink } from "react-router-dom";
 
 export default function AttendeePortal() {
   const [attendees, setAttendees] = useState([]);
@@ -106,6 +107,11 @@ export default function AttendeePortal() {
                             <p>
                               <strong>End Date:</strong> {ev.end_date}
                             </p>
+                            <NavLink to={`/events/${ev.id}/feedback`}>
+                              <button type="button" className="btn btn-primary">
+                                Feedback
+                              </button>
+                            </NavLink>
                             <button
                               type="button"
                               className="btn btn-primary"
