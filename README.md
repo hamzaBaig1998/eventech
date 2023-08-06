@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Eventech Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Eventech Frontend repository! This repository contains the frontend codebase for Project Eventech, an event management application built using React.
 
-## Available Scripts
+## About Project Eventech
 
-In the project directory, you can run:
+Project Eventech is an innovative event management application that aims to streamline event organization and enhance the overall event experience. It offers a range of unique features, including real-time chat functionality, feedback submission, event request capabilities, and an attendee details page for administrators. The application is built using a React frontend and a Django backend.
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To get started with the Eventech Frontend, please follow these steps:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Clone the repository to your local machine using the following command:
+<br/> git clone https://github.com/hamzaBaig1998/eventech.git
+2. Install the required dependencies by running the following command:
+<br/> npm install
+3. Start the development server with the following command:
+<br/>npm start
 
-### `npm test`
+<br/>The frontend server should now be up and running on `http://localhost:3000`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## API Configuration
 
-### `npm run build`
+To ensure proper communication with the backend, please update the API configuration in the `src/config.js` file to point to the correct backend API URL.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Contributing
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+If you would like to contribute to the Eventech Frontend, please follow these steps:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Fork the repository and create your branch:
+   <br/>git checkout -b feature/your-feature-name
+2. Make your changes and commit them with descriptive commit messages:
+<br/>git commit -m "Add feature X"
+3. Push your changes to your forked repository:
+<br/>git push origin feature/your-feature-name
 
-### `npm run eject`
+4. Submit a pull request describing your changes.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+We appreciate your contributions and will review your pull request as soon as possible.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The Eventech Frontend is released under the [MIT License](LICENSE).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Contact
 
-## Learn More
+If you have any questions or suggestions regarding the Eventech Frontend, please feel free to contact us at eventech@gmail.com.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you for using Eventech Frontend! We hope it provides a seamless and intuitive user interface for your event management projects.
